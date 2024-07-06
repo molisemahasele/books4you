@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Books4u - Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="./static/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="./static/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #d43f3a;  /* Bootstrap's danger border color */
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .form-outline label {
+            display: block;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        .form-outline input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .form-outline input:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+        .robot-image {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Books4u</h3>
+                <div class="robot-image">
+                    <img src="./static/landing/assets/img/robot.png" alt="B4u" height="80px" width="50px">
+                </div>
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                   <!-- For CSRF protection if using Flask-WTF -->
+
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="firstName">Company Name</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="password1">Password</label>
+                        <input type="password" id="password1" name="password1" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label" for="password2">Repeat Password</label>
+                        <input type="password" id="password2" name="password2" class="form-control form-control-lg" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="reset" class="btn btn-light btn-lg">Reset all</button>
+                    <button type="submit" class="btn btn-success btn-lg ms-2">Register</button>
+                  </div>
+                </form><hr>
+                <p>Already have an account? <a href="/login">Login</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

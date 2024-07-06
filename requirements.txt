@@ -1,0 +1,6 @@
+pandas
+plotly
+plotly_express
+flask
+flask-login
+flask-sqlalchemy

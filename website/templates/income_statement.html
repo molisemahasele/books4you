@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Statement</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Income Statement</h2>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Product/Description</th>
+                    <th>Amount</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="3" class="text-center">Income</th>
+                </tr>
+                {% for income in incomes %}
+                <tr>
+                    <td>{{ income.product }}</td>
+                    <td>LSL{{ income.total }}</td>
+                    <td>{{ income.timestamp.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="2">Total Income</th>
+                    <td>LSL{{ total_income }}</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">Expenses</th>
+                </tr>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.description }}</td>
+                    <td>LSL{{ expense.price }}</td>
+                    <td>{{ expense.timestamp.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="2">Total Expenses</th>
+                    <td>LSL{{ total_expense }}</td>
+                </tr>
+                <tr>
+                    <th colspan="3" class="text-center">Depreciation</th>
+                </tr>
+                {% for asset in assets %}
+                <tr>
+                    <td>{{ asset.description }}</td>
+                    <td>LSL{{ asset.price * (asset.depreciation / 100.0) }}</td>
+                    <td>{{ asset.timestamp.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="2">Total Depreciation</th>
+                    <td>LSL{{ total_depreciation }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Net Income</th>
+                    <td>LSL{{ net_income }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
